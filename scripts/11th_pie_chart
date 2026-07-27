@@ -1,0 +1,35 @@
+library(dplyr)
+library(ggplot2)
+library(scales)
+
+pie_data <- All_Species %>%
+  count(Species)
+
+ggplot(pie_data,
+       aes(x = "",
+           y = n,
+           fill = Species)) +
+  
+  geom_col(width = 1, color = "white") +
+  
+  coord_polar(theta = "y") +
+  
+  geom_text(aes(label = percent(n/sum(n))),
+            position = position_stack(vjust = 0.5),
+            color = "white",
+            fontface = "bold") +
+  
+  labs(
+    title = "Proportion of Records by Species",
+    fill = "Species"
+  ) +
+  
+  theme_minimal() +
+  
+  theme(
+    axis.title = element_blank(),
+    axis.text = element_blank(),
+    axis.ticks = element_blank(),
+    panel.grid = element_blank(),
+    plot.title = element_text(face = "bold", hjust = 0.5)
+  )
