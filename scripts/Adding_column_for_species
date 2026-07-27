@@ -1,0 +1,39 @@
+# adding 2nd column for species
+
+
+library(readr)
+
+# ==========================
+# CHANGE ONLY THESE 2 LINES
+# ==========================
+
+folder <- "C:/Users/Lenovo/Documents/clean data/human"
+species_name <- "human"
+
+
+
+files <- list.files(
+  path = folder,
+  pattern = "\\.csv$",
+  full.names = TRUE
+)
+
+# Read all CSV files
+data_list <- lapply(files, read_csv, show_col_types = FALSE)
+
+
+Merged_Data <- dplyr::bind_rows(data_list)
+
+
+Merged_Data <- cbind(
+  Merged_Data[, 1, drop = FALSE],
+  Species = species_name,
+  Merged_Data[, -1]
+)
+
+
+write.csv(
+  Merged_Data,
+  file.path(folder, paste0(species_name, "_Merged.csv")),
+  row.names = FALSE
+)
