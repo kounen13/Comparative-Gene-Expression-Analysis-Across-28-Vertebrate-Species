@@ -1,0 +1,21 @@
+library(ggplot2)
+
+ggplot(All_Species,
+       aes(x = log1p(TPM),
+           colour = Species,
+           fill = Species)) +
+  
+  geom_density(alpha = 0.2,
+               linewidth = 1) +
+  
+  labs(
+    title = "Distribution of Gene Expression Across Species",
+    x = "log(1 + TPM)",
+    y = "Density"
+  ) +
+  
+  theme_minimal() +
+  
+  theme(
+    plot.title = element_text(face = "bold", hjust = 0.5)
+  )
