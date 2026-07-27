@@ -1,0 +1,7 @@
+ggplot(All_Species,
+       aes(Species,
+           TPM,
+           fill=Species))+
+geom_violin(trim=FALSE)+
+scale_y_log10()+
+theme_minimal()
