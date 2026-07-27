@@ -1,0 +1,11 @@
+library(dplyr)
+
+sample_data <- sample_n(All_Species,10000)
+
+ggplot(sample_data,
+       aes(x = `Read count`, y = TPM, color = Species))+
+  geom_point(alpha=0.5)+
+  scale_x_log10()+
+  scale_y_log10()+
+  theme_minimal()
+aes(x = `Read count`, y = TPM, color = Species)
