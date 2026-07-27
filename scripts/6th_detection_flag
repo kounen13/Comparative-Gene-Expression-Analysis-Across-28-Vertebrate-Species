@@ -1,0 +1,5 @@
+ggplot(All_Species,
+       aes("Detection flag",
+           fill=Species))+
+  geom_bar(position="dodge")+
+  theme_minimal()
