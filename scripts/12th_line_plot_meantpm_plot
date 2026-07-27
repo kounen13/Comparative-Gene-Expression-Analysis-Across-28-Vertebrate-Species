@@ -1,0 +1,32 @@
+library(dplyr)
+library(ggplot2)
+
+line_data <- All_Species %>%
+  group_by(Species) %>%
+  summarise(
+    MeanTPM = mean(TPM, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  arrange(MeanTPM)
+
+ggplot(line_data,
+       aes(x = reorder(Species, MeanTPM),
+           y = MeanTPM,
+           group = 1)) +
+  
+  geom_line(linewidth = 1.2, color = "steelblue") +
+  
+  geom_point(size = 4, color = "red") +
+  
+  labs(
+    title = "Mean TPM Across Species",
+    x = "Species",
+    y = "Mean TPM"
+  ) +
+  
+  theme_minimal() +
+  
+  theme(
+    plot.title = element_text(face = "bold", hjust = 0.5),
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
