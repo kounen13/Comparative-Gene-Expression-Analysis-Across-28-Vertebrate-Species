@@ -1,0 +1,44 @@
+library(dplyr)
+library(ggplot2)
+
+# Calculate mean TPM for each Tissue and Species
+tissue_expression <- All_Species %>%
+  group_by(`Anatomical entity name`, Species) %>%
+  summarise(
+    MeanTPM = mean(TPM, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+# Keep only the top 15 tissues
+top15 <- tissue_expression %>%
+  group_by(`Anatomical entity name`) %>%
+  summarise(OverallMean = mean(MeanTPM)) %>%
+  arrange(desc(OverallMean)) %>%
+  slice(1:15)
+
+tissue_expression <- tissue_expression %>%
+  filter(`Anatomical entity name` %in% top15$`Anatomical entity name`)
+
+# Plot
+ggplot(tissue_expression,
+       aes(x = reorder(`Anatomical entity name`, MeanTPM),
+           y = MeanTPM,
+           fill = Species)) +
+
+  geom_col(position = "dodge") +
+
+  coord_flip() +
+
+  labs(
+    title = "Mean Gene Expression Across Tissues",
+    x = "Tissue",
+    y = "Mean TPM"
+  ) +
+
+  theme_minimal() +
+
+  theme(
+    plot.title = element_text(face = "bold", hjust = 0.5),
+    axis.text.y = element_text(size = 9),
+    legend.position = "right"
+  )
