@@ -1,0 +1,23 @@
+library(dplyr)
+library(ggplot2)
+
+heatmap_data <-
+  All_Species %>%
+  group_by(Species, `Anatomical entity name`) %>%
+  summarise(
+    MeanTPM = mean(TPM, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+ggplot(heatmap_data,
+       aes(x = Species,
+           y = `Anatomical entity name`,
+           fill = MeanTPM)) +
+  geom_tile() +
+  scale_fill_gradient(low = "white", high = "red") +
+  theme_minimal() +
+  labs(
+    title = "Mean TPM by Species and Tissue",
+    x = "Species",
+    y = "Tissue"
+  )
