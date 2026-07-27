@@ -1,0 +1,32 @@
+# merging multiple tsv file into 1 csv file
+
+
+library(readr)
+library(dplyr)
+
+# Folder where all your Cat .tsv files are stored
+folder <- "location of file"
+
+# Find all .tsv files in the folder
+files <- list.files(
+  path = folder,
+  pattern = "\\.tsv$",
+  full.names = TRUE
+)
+
+# Read every file into R
+data_list <- lapply(files, read_tsv)
+
+# Merge all files into one table
+merged_data <- bind_rows(data_list)
+
+# Check the merged data
+dim(merged_data)
+head(merged_data)
+
+# Save as CSV
+write.csv(
+  merged_data,
+  "name_of_file.csv",
+  row.names = FALSE
+)
