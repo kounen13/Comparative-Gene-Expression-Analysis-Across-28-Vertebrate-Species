@@ -1,0 +1,42 @@
+library(dplyr)
+library(ggplot2)
+
+bubble_data <- All_Species %>%
+  group_by(Species,  "Anatomical entity name") %>%
+  summarise(
+    MeanTPM = mean(TPM, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+ggplot(bubble_data,
+       aes(x = Species,
+           y = "Anatomical entity name",
+           size = MeanTPM,
+           color = MeanTPM)) +
+  
+  geom_point(alpha = 0.8) +
+  
+  scale_size(range = c(2, 12)) +
+  
+  scale_color_gradient(
+    low = "skyblue",
+    high = "red"
+  ) +
+  
+  labs(
+    title = "Gene Expression Bubble Plot",
+    subtitle = "Bubble size and color represent Mean TPM",
+    x = "Species",
+    y = "Tissue",
+    size = "Mean TPM",
+    color = "Mean TPM"
+  ) +
+  
+  theme_minimal() +
+  
+  theme(
+    plot.title = element_text(face = "bold", size = 16, hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5),
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    panel.grid = element_blank()
+  )
