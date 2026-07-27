@@ -1,0 +1,43 @@
+merge 7 species script
+
+
+library(readr)
+library(dplyr)
+library(tools)
+
+# Folder containing your CSV files
+folder <- "put location"
+
+# Find all CSV files
+files <- list.files(
+  path = folder,
+  pattern = "\\.csv$",
+  full.names = TRUE
+)
+
+# Read each file and update Species column
+data_list <- lapply(files, function(file){
+  
+  df <- read_csv(file, show_col_types = FALSE)
+  
+  
+  species_name <- file_path_sans_ext(basename(file))
+  
+
+  species_name <- gsub("_Merged", "", species_name)
+  
+
+  df$Species <- species_name
+  
+  df
+})
+
+# Merge everything
+All_Species <- bind_rows(data_list)
+
+# Save
+write.csv(
+  All_Species,
+  file.path(folder, "All_7_Species_Merged.csv"),
+  row.names = FALSE
+)
