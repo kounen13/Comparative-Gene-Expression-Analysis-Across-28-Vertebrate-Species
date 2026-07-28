@@ -44,37 +44,37 @@ comparative analysis of tissue-specific gene and its visulization by usin R stud
 
 * Each dataset contain *
   ```bash
-1. Experiment ID
+     1. Experiment ID
 
-2. Species
+     2. Species
 
-3. Library ID
+     3. Library ID
 
-4. Library type
+     4. Library type
 
-5. Gene ID
+     5. Gene ID
 
-6. Anatomical entity ID
+     6. Anatomical entity ID
 
-7. Anatomical entity name
+     7. Anatomical entity name
 
-8. Stage ID
+     8. Stage ID
 
-9. Stage name
+     9. Stage name
 
-10. Sex
+     10. Sex
 
-11. Strain
+     11. Strain
 
-12. Read count
+     12. Read count
 
-13. TPM
+     13. TPM
 
-14. Rank
+     14. Rank
 
-15. Detection flag
+     15. Detection flag
 
-16. pValue
+     16. pValue
 
-17. State in Bgee
+     17. State in Bgee
   ```
