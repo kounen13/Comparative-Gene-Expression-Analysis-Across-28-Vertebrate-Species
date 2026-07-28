@@ -1,0 +1,31 @@
+library(dplyr)
+library(ggplot2)
+
+stageplot<-
+Cat_Data%>%
+group_by(`Stage name`)%>%
+summarise(
+MeanTPM=mean(TPM),
+.groups="drop")
+
+ggplot(
+stageplot,
+aes(reorder(`Stage name`,
+MeanTPM),
+MeanTPM,
+fill=MeanTPM))+
+
+geom_col()+
+
+coord_flip()+
+
+scale_fill_gradient(
+low="lightgreen",
+high="darkgreen")+
+
+theme_minimal()+
+
+labs(
+title="Mean Gene Expression Across Developmental Stages",
+x="Stage",
+y="Mean TPM")

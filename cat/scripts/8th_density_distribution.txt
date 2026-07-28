@@ -1,0 +1,14 @@
+ggplot(Cat_Data,
+aes(
+log1p(TPM),
+fill=`Anatomical entity name`,
+color=`Anatomical entity name`))+
+
+geom_density(alpha=.25)+
+
+theme_minimal()+
+
+labs(
+title="Density Distribution of TPM",
+x="log(1+TPM)",
+y="Density")

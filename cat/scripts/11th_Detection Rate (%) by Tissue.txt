@@ -1,0 +1,37 @@
+library(dplyr)
+library(ggplot2)
+
+detection <- Cat_Data %>%
+  group_by(`Anatomical entity name`) %>%
+  summarise(
+    DetectionRate =
+      mean(`Detection flag`=="present")*100,
+    .groups="drop"
+  ) %>%
+  arrange(desc(DetectionRate))
+
+ggplot(detection,
+       aes(reorder(`Anatomical entity name`,
+                   DetectionRate),
+           DetectionRate,
+           fill=DetectionRate))+
+
+geom_col()+
+
+coord_flip()+
+
+scale_fill_gradient(
+low="skyblue",
+high="darkred")+
+
+labs(
+title="Detection Rate Across Cat Tissues",
+x="Tissue",
+y="Detection Rate (%)")+
+
+theme_minimal()+
+
+theme(
+plot.title=element_text(face="bold",
+                        hjust=.5),
+legend.position="none")

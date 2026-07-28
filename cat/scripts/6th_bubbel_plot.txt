@@ -1,0 +1,22 @@
+bubble_data<-
+Cat_Data%>%
+group_by(`Anatomical entity name`)%>%
+summarise(
+MeanTPM=mean(TPM),
+Genes=n())
+
+ggplot(bubble_data,
+aes(
+MeanTPM,
+reorder(`Anatomical entity name`,MeanTPM),
+size=Genes,
+color=MeanTPM))+
+
+geom_point(alpha=.8)+
+
+theme_minimal()+
+
+labs(
+title="Bubble Plot of Cat Tissue Expression",
+x="Mean TPM",
+y="Tissue")

@@ -1,0 +1,29 @@
+medianTPM<-
+Cat_Data%>%
+group_by(`Anatomical entity name`)%>%
+summarise(
+MedianTPM=median(TPM))
+
+ggplot(medianTPM,
+aes(reorder(`Anatomical entity name`,MedianTPM),
+MedianTPM))+
+
+geom_segment(
+aes(
+xend=`Anatomical entity name`,
+y=0,
+yend=MedianTPM),
+color="grey")+
+
+geom_point(
+size=4,
+color="red")+
+
+coord_flip()+
+
+theme_minimal()+
+
+labs(
+title="Median TPM Across Cat Tissues",
+x="Tissue",
+y="Median TPM")

@@ -1,0 +1,36 @@
+library(dplyr)
+library(ggplot2)
+
+heat<-
+Cat_Data%>%
+group_by(`Anatomical entity name`,
+`Stage name`)%>%
+summarise(
+MeanTPM=mean(TPM),
+.groups="drop")
+
+ggplot(
+heat,
+aes(
+`Stage name`,
+`Anatomical entity name`,
+fill=MeanTPM))+
+
+geom_tile(color="white")+
+
+scale_fill_gradient(
+low="white",
+high="red")+
+
+theme_minimal()+
+
+theme(
+axis.text.x=
+element_text(
+angle=45,
+hjust=1))+
+
+labs(
+title="Expression Heatmap by Tissue and Stage",
+x="Development Stage",
+y="Tissue")

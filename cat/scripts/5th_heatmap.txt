@@ -1,0 +1,24 @@
+heatmap_data<-
+Cat_Data%>%
+group_by(`Anatomical entity name`)%>%
+summarise(
+MeanTPM=mean(TPM),
+.groups="drop")
+
+ggplot(heatmap_data,
+aes(x="Cat",
+y=reorder(`Anatomical entity name`,MeanTPM),
+fill=MeanTPM))+
+
+geom_tile()+
+
+scale_fill_gradient(
+low="white",
+high="red")+
+
+theme_minimal()+
+
+labs(
+title="Mean TPM Across Cat Tissues",
+x="Species",
+y="Tissue")

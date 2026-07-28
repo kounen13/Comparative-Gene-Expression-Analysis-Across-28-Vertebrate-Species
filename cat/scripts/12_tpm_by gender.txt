@@ -1,0 +1,28 @@
+library(dplyr)
+library(ggplot2)
+
+sexplot<-
+Cat_Data%>%
+group_by(`Anatomical entity name`,
+         Sex)%>%
+summarise(
+MeanTPM=mean(TPM,
+na.rm=TRUE),
+.groups="drop")
+
+ggplot(
+sexplot,
+aes(`Anatomical entity name`,
+MeanTPM,
+fill=Sex))+
+
+geom_col(position="dodge")+
+
+coord_flip()+
+
+theme_minimal()+
+
+labs(
+title="Mean TPM by Tissue and Sex",
+x="Tissue",
+y="Mean TPM")

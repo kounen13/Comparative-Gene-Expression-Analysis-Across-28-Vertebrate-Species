@@ -1,0 +1,52 @@
+library(dplyr)
+library(ggplot2)
+
+# Keep only cat data
+Cat_Data <- All_Species %>%
+  filter(Species == "cat")
+
+# Calculate mean TPM for each tissue
+meanTPM <- Cat_Data %>%
+  group_by(`Anatomical entity name`) %>%
+  summarise(
+    MeanTPM = mean(TPM, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  arrange(desc(MeanTPM)) %>%
+  slice(1:20)
+
+ggplot(meanTPM,
+       aes(x = reorder(`Anatomical entity name`, MeanTPM),
+           y = MeanTPM,
+           fill = MeanTPM)) +
+
+  geom_col(width = 0.8) +
+
+  coord_flip() +
+
+  scale_fill_gradient(
+    low = "skyblue",
+    high = "darkred"
+  ) +
+
+  labs(
+    title = "Top 20 Cat Tissues by Mean Gene Expression",
+    subtitle = "Average TPM across tissues",
+    x = "Tissue",
+    y = "Mean TPM"
+  ) +
+
+  theme_minimal() +
+
+  theme(
+    plot.title = element_text(face = "bold", size = 16, hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5),
+    legend.position = "none"
+  )
+
+ggsave(
+  "Cat_Top20_Tissues_MeanTPM.png",
+  width = 10,
+  height = 8,
+  dpi = 300
+)
