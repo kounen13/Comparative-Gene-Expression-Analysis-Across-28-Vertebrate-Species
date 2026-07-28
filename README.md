@@ -79,10 +79,16 @@ comparative analysis of tissue-specific gene and its visulization by usin R stud
      17. State in Bgee
   ```
      ##🔃Process
+  
 
      **download rna-seq expression database from Bgee**
+  
      **merge multiple experiment dataset of same species into one dataset file**
+  
      **merge 7-species dataset into one pair**
+  
      **4 pair of species group created**
+  
      **perform all this process in R studio.**
+  
      **generated multiple plot using this dataset through R studio**
