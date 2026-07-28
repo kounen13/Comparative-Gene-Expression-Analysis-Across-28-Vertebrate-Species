@@ -1,11 +1,11 @@
 # 🧬Comparative-Gene-Expression-Analysis-Across-28-Vertebrate-Species
-## 📌 discription
+## 📌 description
 
-Comparative transcriptomic analysis of 29 vertebrate species using Bgee seq data, 
-comparative analysis of tissue-specific gene and its visulization by usin R studio.
+Comparative Gene Expression Analysis of 29 vertebrate species using Bgee seq data, 
+comparative analysis of tissue-specific gene and its visualization by using R studio.
 
 
-## 😼 Species uesd
+## 😼 Species used
 
 
 ```bash
