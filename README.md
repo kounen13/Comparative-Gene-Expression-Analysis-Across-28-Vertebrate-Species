@@ -92,3 +92,22 @@ comparative analysis of tissue-specific gene and its visulization by usin R stud
      **-perform all this process in R studio.**
   
      **-generated multiple plot using this dataset through R studio**
+
+   ## 📊 visualization.
+
+   ```bash
+   1. Gene Count vs TPM Distribution
+   2. TPM Distribution Boxplot
+   3. TPM Distribution Violin Plot
+   4. Read Count vs TPM Scatter Plot
+   5. Median TPM Across Species
+   6. Detection Flag Distribution
+   7. Heatmap of Mean TPM by Species and Tissue
+   8. Density Distribution of TPM Across Species
+   9. Median TPM Lollipop Plot
+   10. Bubble Plot of Mean TPM and Gene Count
+   11. Gene Distribution Pie Chart
+   12. Mean TPM Line Plot
+   13. Expression Variability Box Plot
+
+   ```
