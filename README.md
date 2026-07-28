@@ -1,10 +1,13 @@
 # 🧬Comparative-Gene-Expression-Analysis-Across-28-Vertebrate-Species
-###📌 discription
+##📌 discription
 
 Comparative transcriptomic analysis of 29 vertebrate species using Bgee seq data, 
 comparative analysis of tissue-specific gene and its visulization by usin R studio.
 
-###😼 Species uesd
+
+##😼 Species uesd
+
+
 ```bash
 - Felis catus (Domestic Cat)
 - Homo sapiens (Human)
@@ -34,3 +37,6 @@ comparative analysis of tissue-specific gene and its visulization by usin R stud
 - Meleagris gallopavo (Turkey)
 - Crab
 ```
+##📝** Data source.**
+[![Bgee](https://img.shields.io/badge/Bgee-Database-green)](https://www.bgee.org/)[Bgee website](https://www.bgee.org/search/species)
+
