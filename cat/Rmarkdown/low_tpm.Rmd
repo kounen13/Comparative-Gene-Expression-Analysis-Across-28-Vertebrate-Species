@@ -1,0 +1,107 @@
+---
+title: "low_tpm_gene_across_tissue"
+author: "shaikh mohammad kounen"
+date: "2026-07-28"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(scales)
+```
+
+
+## Low tpm genes across tissue
+
+**load data**
+
+```{r}
+cat_species <- read_csv("C:/Users/Lenovo/Documents/mered data/cat/cat.csv",
+show_col_types = FALSE
+                        
+        )
+```
+
+- now we have to filter data from merge file into gene who have  tpm<1.
+```{r}
+
+cat_low_tpm <- cat_species %>%
+  filter(TPM < 1)
+```
+
+- now we get no of total low tpm gene.
+```{r}
+cat("Total number of rows with TPM < 1:", nrow(cat_low_tpm))
+```
+
+## Tissue with most no of Low tpm genes
+
+```{r}
+low_tissue <- cat_low_tpm %>%
+  group_by(`Anatomical entity name`) %>%
+  summarise(
+    Low_TPM_Genes = n_distinct(`Gene ID`),
+    .groups = "drop"
+  ) %>%
+  arrange(desc(Low_TPM_Genes))
+print(low_tissue)
+```
+**from above tabe we can conclude that liver has higest no low tpm genes and embyonic head have lowest**
+
+## bar-plot on no of low tpm gene across tissue
+
+```{r}
+
+
+ggplot(low_tissue,
+       aes(x = reorder(`Anatomical entity name`, Low_TPM_Genes),
+           y = Low_TPM_Genes,
+           fill = Low_TPM_Genes)) +
+
+  geom_col(width = 0.8) +
+
+  coord_flip() +
+
+  geom_text(aes(label = Low_TPM_Genes),
+           hjust = 1.2,
+          color = "white",
+            size = 3.8) +
+
+  scale_fill_gradient(
+    low = "#90CAF9",
+    high = "#0D47A1"
+  ) +
+
+  labs(
+    title = "Number of Low-Expression Genes Across Cat Tissues",
+    subtitle = "Unique genes with TPM < 1 in each tissue",
+    x = "Tissue",
+    y = "Number of Low-Expression Genes"
+  ) +
+
+  theme_minimal(base_size = 14) +
+
+  theme(
+    plot.title = element_text(face = "bold", size = 16, hjust = 0.5),
+    plot.subtitle = element_text(size = 12, hjust = 0.5),
+    axis.title = element_text(face = "bold"),
+    axis.text.y = element_text(size = 9),
+    axis.text.x = element_text(size = 10),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor = element_blank(),
+    legend.position = "none"
+  )
+```
+
+### conclusion
+**Low-expression gene analysis (TPM < 1) revealed clear differences among cat tissues. The liver exhibited the highest number of low-expression genes (23,968), whereas the embryonic head had the fewest (5,669). These results demonstrate that the abundance of lowly expressed genes varies across tissues**
