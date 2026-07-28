@@ -37,6 +37,57 @@ comparative analysis of tissue-specific gene and its visulization by usin R stud
 - Meleagris gallopavo (Turkey)
 - Crab
 ```
+
+## 🦋 Group
+
+### group 1
+```bash
+chicken
+mangabey
+pig
+platypus
+turkey
+white tuffed ear
+
+```
+
+
+### group 2
+```bash
+cat
+cattle
+dog
+goat
+horse
+pig
+sheep
+```
+
+### group 3
+```bash
+crab
+gray mouse
+guinea_pig
+mole_rat
+opposum_m
+rabbit
+rat
+```
+
+### group 4
+```bash
+human
+baboon
+chimpanzee
+gorilla
+green monkey
+macaque_m
+pan_paniscus
+```
+
+
+
+
 ## 📝** Data source.**
 
 
