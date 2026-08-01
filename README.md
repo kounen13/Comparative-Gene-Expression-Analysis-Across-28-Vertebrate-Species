@@ -1,8 +1,8 @@
-# 🧬Comparative-Gene-Expression-Analysis-Across-28-Vertebrate-Species
+# 🧬Comparative-Gene-Expression-Analysis-Across-28-Vertebrate-Species And Low-TPM Gene Analysis in Domestic Cat
 ## 📌 description
 
 Comparative Gene Expression Analysis of 29 vertebrate species using Bgee seq data, 
-comparative analysis of tissue-specific gene and its visualization by using R studio.
+comparative analysis of tissue-specific gene and its visualization by using R studio. and finding highest no of low tpm genes across tisuue 
 
 
 ## 😼 Species used
@@ -85,7 +85,7 @@ macaque_m
 pan_paniscus
 ```
 
-
+### more specific toward cat
 
 
 ## 📝** Data source.**
@@ -162,3 +162,50 @@ pan_paniscus
    13. Expression Variability Box Plot
 
    ```
+
+   ## 🧬 Low Gene Expression Analysis in Domestic Cat
+
+  ### Objective
+
+  To identify tissues containing the highest number of low-expression genes (TPM < 1) in the domestic cat transcriptome.
+
+  ### 🔃 process
+  -  Filtered all genes with TPM < 1.
+  -  Grouped the filtered data by anatomical tissue.
+  -  Counted the number of unique low-expression genes in each tissue.
+  -  Compared tissues using a bar plot.
+ 
+    ### Result
+
+
+
+| Rank | Anatomical Tissue | Low-Expression Genes |
+|:---:|----------------------------|--------------------:|
+| 1 | Liver | 23,968 |
+| 2 | Skeletal muscle tissue | 23,482 |
+| 3 | Heart | 22,948 |
+| 4 | Adult mammalian kidney | 22,482 |
+| 5 | Spleen | 22,457 |
+| 6 | Lung | 20,111 |
+| 7 | Adipose tissue | 19,483 |
+| 8 | Hindlimb muscle | 19,386 |
+| 9 | Brain | 18,116 |
+| 10 | Testis | 14,045 |
+| 11 | Embryo | 8,755 |
+| 12 | Tip of external ear | 7,622 |
+| 13 | Prefrontal cortex | 7,181 |
+| 14 | Zone of skin | 7,106 |
+| 15 | Eyeball of camera-type eye | 6,615 |
+| 16 | Uterus | 6,197 |
+| 17 | Embryonic head | 5,669 |
+
+
+## visualization (bar plot).
+
+![bar plot](https://github.com/kounen13/Comparative-Gene-Expression-Analysis-Across-28-Vertebrate-Species/blob/main/cat/low_tpm/Screenshot%202026-07-29%20024644.png?raw=true)
+
+### 📝 conclusion 
+Low-expression gene analysis (TPM < 1) revealed clear differences among cat tissues. The
+liver exhibited the highest number of low-expression genes (23,968), whereas the embryonic
+head had the fewest (5,669). These results demonstrate that the abundance of lowly expressed
+genes varies across tissues
